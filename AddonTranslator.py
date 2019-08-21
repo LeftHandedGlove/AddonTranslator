@@ -34,9 +34,11 @@ for language in google_languages:
     for line in input_strings:
         print('Translating {a}'.format(a=line.strip()))
         translated_strings_dict[language].append(translator.translate(text=line.strip(), dest=language).text)
-print('Done translating')
+    print("Done Translating: " + language)
+print('Done translating All Languages')
 
 # Build the localization file.
+print("Creating Localization File")
 with open(output_file_path, 'w') as output_handle:
     # Add the stuff at the top of the file
     output_handle.write('local addon_name, addon_data = ...\n\n')
