@@ -10,7 +10,9 @@ Translates a given list of strings into the languages supported by WoW and saves
 2) Run: git submodule init
 3) Run: git submodule update
 4) Continue to normal installation
+
 OR
+
 1) Clone your repo with the --recurse-submodules flag: git clone --recurse-submodules <repo_url>
 2) Continue to normal installation
 
