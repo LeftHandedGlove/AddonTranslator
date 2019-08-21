@@ -5,7 +5,7 @@ Translates a given list of strings into the languages supported by WoW and saves
 * Python 3
 * venv Python module: pip install venv
 
-# Installation as submodule
+# Installation for repos that use this as a submodule
 1) Clone your other repo: git clone <repo_url>
 2) Run: git submodule init
 3) Run: git submodule update
@@ -15,6 +15,11 @@ OR
 
 1) Clone your repo with the --recurse-submodules flag: git clone --recurse-submodules <repo_url>
 2) Continue to normal installation
+
+# Using this as a submodule
+1) In your repo run: git submodule add https://github.com/LeftHandedGlove/AddonTranslator.git <[optional] path>
+
+        ex) git submodule add https://github.com/LeftHandedGlove/AddonTranslator.git Tools/AddonTranslator
 
 # Installation
 1) Move to the AddonTranslator repo's directory
