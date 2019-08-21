@@ -24,6 +24,7 @@ OR
 1) Start the venv if it isn't already started: venv\Scripts\activate
 2) Create a file of every string you want to translate with a newline between each string (Currently no support for newlines in strings)
 3) Call the program: python AddonTranslator.py <path to sstring file>
+
     example) python AddonTranslator.py hello.tx
 4) Place the generated localization.lua file where ever you want
 5) (Optional) Deactivate the venv once your done: venv\Scripts\deactivate.bat
