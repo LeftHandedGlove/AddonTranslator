@@ -23,6 +23,7 @@ OR
 
 # Installation
 1) Move to the AddonTranslator repo's directory
+2) Create the virtual environment: python -m venv venv
 2) Start the venv: venv\Scripts\activate
 3) Install the other Python modules: pip install -r requirements.txt
 4) (Optional) Deactivate the venv once your done: venv\Scripts\deactivate.bat
