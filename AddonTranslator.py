@@ -31,17 +31,19 @@ except FileNotFoundError:
 for language in google_languages:
     print('Starting translations for {a}'.format(a=language))
     translated_strings_dict[language] = list()
-    for line in input_strings:
-        print('Translating {a}'.format(a=line.strip()))
+    for index, line in enumerate(input_strings):
+        print("\r[{a}/{b}]".format(a=index + 1, b=len(input_strings)), end="")
         translated_strings_dict[language].append(translator.translate(text=line.strip(), dest=language).text)
-    print("Done Translating: " + language)
+    print("\nDone Translating: " + language)
 print('Done translating All Languages')
 
 # Build the localization file.
 print("Creating Localization File")
-with open(output_file_path, 'w') as output_handle:
+with open(output_file_path, 'w', encoding="utf-8") as output_handle:
     # Add the stuff at the top of the file
-    output_handle.write('local addon_name, addon_data = ...\n\n')
+    output_handle.write("local addon_name, addon_data = ...\n"
+                        "addon_data.localization_table = {}\n"
+                        "local L = addon_data.localization_table\n\n")
     # Go through each language
     for localization in localizations:
         output_handle.write('if GetLocale() == "{a}" then\n'.format(a=localization))
@@ -49,9 +51,9 @@ with open(output_file_path, 'w') as output_handle:
         # Go through each line
         for index, line in enumerate(translated_strings_dict[google_lang]):
             try:
-                output_handle.write('\taddon_data["{a}"] = "{b}"\n'.format(a=input_strings[index], b=line))
+                output_handle.write('\tL["{a}"] = "{b}"\n'.format(a=input_strings[index], b=line))
             except UnicodeEncodeError:
-                output_handle.write('\taddon_data["{a}"] = "{b}"\n'.format(a=input_strings[index], b='TODO'))
+                output_handle.write('\tL["{a}"] = "{b}"\n'.format(a=input_strings[index], b='TODO'))
         output_handle.write('end\n\n')
 print('Saving output file to: {a}'.format(a=output_file_path))
 
